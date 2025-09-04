@@ -6,26 +6,28 @@ export default function App() {
 
   console.log(textinput);
   return (
-    <div className='h-screen w-screen bg-slate-300 flex flex-col gap-3 items-center justify-center'>
+    <div className='h-screen w-screen bg-slate-300 flex flex-col gap-5 items-center justify-center'>
        <div>
         <h1 className='text-3xl flex items-center justify-center '>Text Translator</h1>
        </div>
        <div className='flex flex-col gap-5 items-center justify-center'>
 
         <textarea 
-        className='bg-white h-40 w-3xl border outline-none rounded-lg'
+        className='bg-white h-40 w-3xl border outline-none rounded-lg pr-2 pl-5 p-3'
         onChange={ (e)=> setTextInput(e.target.value) }></textarea>
 
-        <textarea className='bg-white h-40 w-3xl border outline-none rounded-lg'
+        <textarea className='bg-white h-40 w-3xl border outline-none rounded-lg pr-2 pl-5 p-3'
         onChange={ (e)=> setTextInput(e.target.value) }></textarea>
+
+        <button className=' w-full rounded-lg border bg-slate-700 p-3 text-white uppercase'>
+        Translate
+        </button>
+
 
        </div>
 
-       <div className='bg-blue-700 w-3xl outline-none rounded-lg'> 
+       
 
-        <button className='bg-blue-700 w-3xl outline-none rounded-lg'>Translate</button>
-
-      </div>
     </div>
   )
 }
