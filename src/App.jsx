@@ -41,22 +41,24 @@ export default function App() {
   console.log(textinput);
   console.log(language);
   return (
-    <div className='h-screen w-screen bg-slate-300 flex flex-col gap-5 items-center justify-center'>
+    <div className='min-h-screen w-full bg-slate-300 flex flex-col items-center justify-center p-4'>
        <div>
-        <h1 className='text-3xl flex items-center justify-center '>Text Translator</h1>
+        <h1 className='text-2xl md:text-3xl font-bold mb-6 text-center'>Text Translator</h1>
        </div>
-       <div className='flex flex-col gap-5 items-center justify-center'>
+
+       <div className='flex flex-col gap-5 items-center justify-center w-full max-w-2xl'>
 
         <textarea 
-        className='bg-white h-40 w-3xl border outline-none rounded-lg pr-2 pl-5 p-3'
+        className='bg-white h-40 w-full border outline-none rounded-lg p-3 cursor-pointer'
         onChange={ (e)=> setTextInput(e.target.value) }></textarea>
 
-        <textarea className='bg-white h-40 w-3xl border outline-none rounded-lg pr-2 pl-5 p-3 cursor-pointer'
-        onChange={ (e)=> setTextInput(e.target.value) } value={result} readOnly></textarea>
+        <textarea className='bg-white h-40 w-full border outline-none rounded-lg p-3'
+         value={result} readOnly></textarea>
 
-        <div>
-          <label htmlFor="language">Choose the language: </label>
-          <select name="language" defaultValue="en" className='bg-white rounded-lg p-2 cursor-pointer' onChange={(e)=> setLanguage(e.target.value)}>
+        <div className='flex flex-col sm:flex-row gap-3 w-full sm:items-center'>
+          <label htmlFor="language" className='font-medium'>Choose the language: </label>
+          <select name="language" defaultValue="en" className='bg-white rounded-lg p-2 cursor-pointer border w-full sm:w-auto'
+           onChange={(e)=> setLanguage(e.target.value)}>
             <option value="en">Select</option>
             <option value="as">Assamese</option>
             <option value="bn">Bengali</option>
