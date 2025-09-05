@@ -1,14 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios';
+import {LoaderCircle} from 'lucide-react'
 
 export default function App() {
   const [textinput , setTextInput] = useState("");
   const [language , setLanguage] = useState("");
   const [result , setResult] = useState("");
+  const [loading , setLoading] = useState(false);
 
   const handleTextTranslation = async ()=>{
     try{
+      setLoading(true);
       const options = {
       method: 'POST',
       url: 'https://google-translator9.p.rapidapi.com/v2',
@@ -25,11 +28,13 @@ export default function App() {
         }
       };
       const response = await axios.request(options);
+      setLoading(false);
       console.log(response.data.data.translations[Number(0)].translatedText);
       setResult(response.data.data.translations[Number(0)].translatedText)
     }
     catch(error){
-      console.log(error);
+      setLoading(false);
+      console.log(error.data);
     }
   }
 
@@ -46,21 +51,36 @@ export default function App() {
         className='bg-white h-40 w-3xl border outline-none rounded-lg pr-2 pl-5 p-3'
         onChange={ (e)=> setTextInput(e.target.value) }></textarea>
 
-        <textarea className='bg-white h-40 w-3xl border outline-none rounded-lg pr-2 pl-5 p-3'
+        <textarea className='bg-white h-40 w-3xl border outline-none rounded-lg pr-2 pl-5 p-3 cursor-pointer'
         onChange={ (e)=> setTextInput(e.target.value) } value={result} readOnly></textarea>
 
         <div>
           <label htmlFor="language">Choose the language: </label>
-          <select name="language" defaultValue="en" className='bg-white rounded-lg p-2' onChange={(e)=> setLanguage(e.target.value)}>
+          <select name="language" defaultValue="en" className='bg-white rounded-lg p-2 cursor-pointer' onChange={(e)=> setLanguage(e.target.value)}>
             <option value="en">Select</option>
-            <option value="hi">Hindi</option>
+            <option value="as">Assamese</option>
             <option value="bn">Bengali</option>
+            <option value="gu">Gujarati</option>
+            <option value="hi">Hindi</option>
+            <option value="kn">Kannada</option>
+            <option value="ml">Malayalam</option>
+            <option value="mr">Marathi</option>
+            <option value="or">Oriya</option>
+            <option value="pa">Punjabi</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+            <option value="ur">Urdu</option>
+            
           </select>
         </div>
 
-        <button className=' w-full rounded-lg border bg-slate-700 p-3 text-white uppercase'
-        onClick={handleTextTranslation}>
-        Translate
+        <button className=' w-full rounded-lg border bg-slate-700 p-3 text-white uppercase flex items-center justify-center cursor-pointer'
+        onClick={handleTextTranslation} >
+        
+        {
+          loading ? ( <LoaderCircle className='animate-spin'/>) : "Translate"
+        }
+
         </button>
 
 
