@@ -62,6 +62,7 @@ export default function App() {
             <option value="en">Select</option>
             <option value="as">Assamese</option>
             <option value="bn">Bengali</option>
+            <option value="fr">French</option>
             <option value="gu">Gujarati</option>
             <option value="hi">Hindi</option>
             <option value="kn">Kannada</option>
@@ -69,6 +70,7 @@ export default function App() {
             <option value="mr">Marathi</option>
             <option value="or">Oriya</option>
             <option value="pa">Punjabi</option>
+            <option value="es">Spanish</option>
             <option value="ta">Tamil</option>
             <option value="te">Telugu</option>
             <option value="ur">Urdu</option>
